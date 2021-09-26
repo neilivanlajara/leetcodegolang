@@ -1,0 +1,25 @@
+https://leetcode.com/problems/reverse-prefix-of-word
+
+func reversePrefix(word string, ch byte) string {
+	punto := -1
+	res := ""
+	for i := 0; i < len(word); i++ {
+		if word[i] == ch {
+			punto = i
+			break
+		}
+	}
+	//caso non presente
+	if punto == -1 {
+		return word
+	}
+    //caso default
+	for i := punto; i >= 0; i-- {
+		res += string(word[i])
+		if i == 0 {
+			res += word[punto+1:]
+		}
+	}
+
+	return res
+}
