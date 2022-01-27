@@ -1,0 +1,19 @@
+func countElements(nums []int) int {
+    if len(nums) < 2 {
+        return 0
+    }
+	sort.Ints(nums)
+	if nums[0] == nums[len(nums)-1] {
+		return 0
+	}
+	inizio := 0
+	fine := len(nums) - 1
+	for nums[0] == nums[inizio] {
+		inizio++
+	}
+	for nums[len(nums)-1] == nums[fine] {
+		fine--
+	}
+
+	return len(nums[inizio:fine+1])
+}
