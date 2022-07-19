@@ -1,0 +1,50 @@
+
+fa proprio schifo come performance però funziona :/
+forse dovrei limitare l'uso di una sola mappa?
+magari non usare tutti quei sort?
+
+
+
+
+func noDupli(x int, y []int) bool {
+	for _, r := range y {
+		if x == r {
+			return false
+		}
+	}
+	return true
+} 
+func frequencySort(s string) string {
+    res := ""
+	map1 := make(map[int]int)
+	map2 := make(map[int][]int)
+	for _, r := range s {
+		map1[int(r)]++
+	}
+	freq := []int{}
+	fmt.Println(map1)
+
+	for i, r := range map1 {
+		map2[r] = append(map2[r], i)
+		if noDupli(r, freq) {
+			freq = append(freq, r)
+		}
+	}
+	fmt.Println("le frequenze: ", freq)
+	fmt.Println(map1)
+	sort.Sort(sort.Reverse(sort.IntSlice(freq)))
+	fmt.Println(freq)
+	for _, r := range freq {
+		for map2[r] != nil {
+			for _, v := range map2[r] {
+				for i := 0; i < map1[v]; i++ {
+					res += string(v)
+				}
+				fmt.Println()
+				map2[r] = append([]int{}, map2[r][1:]...)
+			}
+			delete(map2, r)
+		}
+	}
+	return res
+}
