@@ -2,6 +2,8 @@
 //palindromo 
 //https://leetcode.com/problems/strictly-palindromic-number/submissions/
 
+//Runtime: 0 ms, faster than 100.00% of Go online submissions for Strictly Palindromic Number.
+//Memory Usage: 1.9 MB, less than 15.89% of Go online submissions for Strictly Palindromic Number.
 
 func isStrictlyPalindromic(n int) bool {
     q := 2
