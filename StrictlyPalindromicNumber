@@ -1,0 +1,42 @@
+//in pratica è lo stesso algoritmo con cui si estrae il numero binario (che è base 2 ) solo che ogni volta aumenta di uno e controllo se è questo è
+//palindromo 
+//https://leetcode.com/problems/strictly-palindromic-number/submissions/
+
+
+func isStrictlyPalindromic(n int) bool {
+    q := 2
+
+	for q <= n-2 {
+
+		w := n
+		res := ""
+		for w > 0 {
+			temp := w % q
+			fmt.Println(temp)
+			att := strconv.Itoa(temp)
+
+			res += att
+			w = w / 2
+		}
+		
+		q++
+		//fmt.Println(res,q,n)
+        if !checkPalin(res){
+            return false
+        }
+	}
+    return true 
+}
+
+
+
+func checkPalin(s string) bool {
+	for i := 0; i < len(s)/2; i++ {
+		if s[i] != s[len(s)-1-i] {
+			return false
+		}
+	}
+	return true
+}
+
+
