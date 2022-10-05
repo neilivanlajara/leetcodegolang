@@ -1,0 +1,36 @@
+//Runtime: 158 ms, faster than 74.16% of Go online submissions for Contains Duplicate II.
+//Memory Usage: 19.2 MB, less than 9.12% of Go online submissions for Contains Duplicate II.
+//https://leetcode.com/problems/contains-duplicate-ii/
+
+//avevo provato a farlo semplice con due for ma, al 45ish case mi dava exceeded time, quindi ho pensato che usare le map sarebbe molto più veloce
+//visto che questi stanno nella heap 
+
+func containsNearbyDuplicate(nums []int, q int) bool {
+    
+    map1 := make(map[int][]int)
+
+	for i, r := range nums {
+		//fmt.Println(i, r)
+		map1[r] = append(map1[r], i)
+	}
+	for k, v := range map1 {
+		if len(map1[k]) > 1 {
+			fmt.Println(v)
+			for g, o := range v {
+				for h, k := range v {
+					if abs(k-o) <= q  && g != h {
+                        return true			 			
+					}
+				}
+			}
+		}
+	}
+    return false 
+}
+
+func abs(k int)int{
+    if k<0{
+        return k*-1 
+    }
+    return k 
+}
