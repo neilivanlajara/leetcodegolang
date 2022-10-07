@@ -1,0 +1,30 @@
+//https://leetcode.com/problems/sorting-the-sentence
+
+/* Runtime: 0 ms, faster than 100.00% of Go online submissions for Sorting the Sentence.
+Memory Usage: 2.1 MB, less than 6.15% of Go online submissions for Sorting the Sentence. */
+
+//ho usato una specie di counting sort ( :D ) 
+
+func sortSentence(s string) string {
+   q := strings.Fields(s)
+	res := ""
+	w := make(map[string]string)
+	for _, r := range q {
+		//fmt.Println(string(r[len(r)-1]))
+		w[string(r[len(r)-1])] = r[:len(r)-1]
+		//fmt.Println("-> ", r[:len(r)-1])
+	}
+	fmt.Println("prova", w)
+	for i := 1; i <= len(q); i++ {
+		t := strconv.Itoa(i)
+
+		if i == len(q) {
+			res += w[t]
+		} else {
+			res += w[t] + " "
+		}
+	}
+	//fmt.Print(res)
+    
+    return res
+}
