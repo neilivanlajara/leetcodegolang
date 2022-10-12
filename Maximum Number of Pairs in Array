@@ -1,0 +1,28 @@
+//https://leetcode.com/problems/maximum-number-of-pairs-in-array/
+
+//Runtime: 3 ms, faster than 52.83% of Go online submissions for Maximum Number of Pairs in Array.
+//Memory Usage: 2.4 MB, less than 49.06% of Go online submissions for Maximum Number of Pairs in Array.
+
+//ho usato la map, poi esplorando la map ho solo ciclato i loro valori con -2 ogni volta, finché non diventano zero:
+//se risulta >= allora è una coppia
+//altrimenti singolo
+
+func numberOfPairs(nums []int) []int {
+    map1:= make(map[int]int)
+    res:= []int{0,0}
+    for _ , r := range nums{
+        map1[r]++
+    }
+    
+    for _ , k := range map1{
+        for k > 0{
+            if k - 2 >=0{
+                res[0]++
+            }else{
+                res[1]++
+            }
+            k = k - 2 
+        }
+    }
+    return res
+}
