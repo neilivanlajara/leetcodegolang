@@ -1,0 +1,22 @@
+//Runtime 10 ms Beats 88.11% Memory 6.5 MB Beats  95.26%
+
+func minDeletionSize(strs []string) int {
+   lung:= len(strs[0])
+    l := 0 
+    count := 0 
+    for l <lung{
+        temp:=strs[0][l]
+         
+        for _ , r := range strs{
+            if temp > r[l]{
+                count++
+                break
+            }
+            temp = r[l]
+        }
+
+      
+        l++
+    }
+    return count
+}
